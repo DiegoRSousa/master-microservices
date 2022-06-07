@@ -27,7 +27,7 @@ public class AccountsController {
 
     	var account = accountsRepository.findByCustomerId(1L).orElseThrow(
         		() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        LOGGER.info("get account: {}", account);
+        LOGGER.info("account found: {}", account);
     	return ResponseEntity.ok(new AccountDetail(account));
         
     }
