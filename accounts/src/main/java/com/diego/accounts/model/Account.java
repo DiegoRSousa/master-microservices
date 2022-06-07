@@ -1,11 +1,9 @@
 package com.diego.accounts.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Account {
@@ -13,10 +11,12 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+	@OneToOne
 	private Customer customer;
     private String number;
-    private String type;
-    private LocalDate createdAt = LocalDate.now();
+	@Enumerated(EnumType.STRING)
+    private AccountType type;
+    private LocalDateTime createdAt = LocalDateTime.now();
     
 	public Long getId() {
 		return id;
@@ -24,13 +24,24 @@ public class Account {
 	public String getNumber() {
 		return number;
 	}
-	public String getType() {
+	public Customer getCustomer() {
+		return customer;
+	}
+	public AccountType getType() {
 		return type;
 	}
-	public String getBranchAddress() {
-		return branchAddress;
-	}
-	public LocalDate getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
+	}
+
+	@Override
+	public String toString() {
+		return "Account{" +
+				"id=" + id +
+				", customer=" + customer +
+				", number='" + number + '\'' +
+				", type=" + type +
+				", createdAt=" + createdAt +
+				'}';
 	}
 }

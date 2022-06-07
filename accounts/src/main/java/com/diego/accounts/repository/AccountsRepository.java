@@ -4,7 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.diego.accounts.model.Account;
 
+import java.util.Optional;
+
 public interface AccountsRepository extends JpaRepository<Account, Long>{
 
-	public Account findByCustomerId(String customerId);
+	public Optional<Account> findByCustomerId(Long customerId);
 }
