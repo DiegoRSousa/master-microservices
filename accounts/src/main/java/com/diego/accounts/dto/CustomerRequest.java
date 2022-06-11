@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.diego.accounts.model.Customer;
+import com.diego.accounts.validator.UniqueValue;
+
 
 public class CustomerRequest {
 	
@@ -14,6 +16,7 @@ public class CustomerRequest {
     private String number;
     @Email
     @NotNull
+    @UniqueValue(domainClass = Customer.class, fieldName = "email")
     private String email;
     @NotNull
     private String mobileNumber;

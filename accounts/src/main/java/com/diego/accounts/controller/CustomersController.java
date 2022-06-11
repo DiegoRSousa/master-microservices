@@ -32,9 +32,6 @@ public class CustomersController {
 	@PostMapping
 	public ResponseEntity<CustomerResponse> save(@Valid @RequestBody CustomerRequest request) {
 		
-		if(request.getEmail().isBlank() && request.getMobileNumber().isBlank())
-			throw new IllegalStateException("The mobile number is Mandatory!");
-		
 		Customer customer = request.toModel();
 		log.info("saving customer: {}", customer);
 		customerRepository.save(customer);
