@@ -1,22 +1,31 @@
 package com.diego.accounts.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String number;
+    private String email;
+    private String mobileNumber;
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    public Long getId() {
+    public Customer(String name, String number, String email, String mobileNumber) {
+		this.name = name;
+		this.number = number;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -28,17 +37,21 @@ public class Customer {
         return number;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public String getEmail() {
+		return email;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                ", createdAt=" + createdAt +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", number=" + number + ", email=" + email + ", mobileNumber="
+				+ mobileNumber + ", createdAt=" + createdAt + "]";
+	}
 }

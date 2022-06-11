@@ -5,11 +5,13 @@ CREATE TABLE `customer` (
   `id` int AUTO_INCREMENT  PRIMARY KEY,
   `name` varchar(100) NOT NULL,
   `number` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `mobile_number` varchar(20) NOT NULL,
   `created_at` date DEFAULT NULL
 );
 
-INSERT INTO `customer` (`name`, `number`,`created_at`)
- VALUES ('Kakashi','9993823234', CURDATE());
+INSERT INTO `customer` (`name`, `number`, `email`, `mobile_number`,`created_at`)
+ VALUES ('Kakashi','9993823234', 'kakashi@gmail.com', '839998432548',  CURDATE());
 
 CREATE TABLE `account` (
   `id` int AUTO_INCREMENT PRIMARY KEY,
