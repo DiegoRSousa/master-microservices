@@ -47,5 +47,10 @@ public class CustomerRequest {
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
+
+	public boolean mobileNumberIsNotValid() {
+		return email.isBlank() && mobileNumber.isBlank();
+		
+	}
 	
 }

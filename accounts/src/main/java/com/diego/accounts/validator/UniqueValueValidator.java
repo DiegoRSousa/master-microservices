@@ -24,7 +24,8 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 	
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		var query = manager.createQuery("select 1 from "+klazz.getName()+" where "+domainAttribute+"=:value");
+		var query = manager.createQuery("select 1 from "+klazz.getName()+" "
+				+ "where "+domainAttribute+"=:value and "+domainAttribute+" <> '' ");
 		query.setParameter("value", value);
 		List<?> list = query.getResultList();
 		return list.isEmpty();
