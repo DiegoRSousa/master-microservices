@@ -1,5 +1,7 @@
 package com.diego.accounts.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -28,10 +30,7 @@ public class CustomersController {
 	}
 
 	@PostMapping
-	public ResponseEntity<CustomerResponse> save(@RequestBody CustomerRequest request) {
-		
-		if(request.getName() == null || request.getName().isBlank())
-			throw new IllegalStateException("The name is Mandatory!");
+	public ResponseEntity<CustomerResponse> save(@Valid @RequestBody CustomerRequest request) {
 		
 		if(request.getEmail().isBlank() && request.getMobileNumber().isBlank())
 			throw new IllegalStateException("The mobile number is Mandatory!");
