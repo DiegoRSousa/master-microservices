@@ -1,15 +1,21 @@
 package com.diego.accounts.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.diego.accounts.model.Customer;
 
 public class CustomerRequest {
 	
-	@NotBlank(message = "is mandatory")
+	@NotBlank
     private String name;
+	@NotBlank
     private String number;
+    @Email
+    @NotNull
     private String email;
+    @NotNull
     private String mobileNumber;
 
 	public CustomerRequest(String name, String number, String email, String mobileNumber) {
